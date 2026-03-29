@@ -1,0 +1,71 @@
+:root  {
+
+    --bg: #020b11;
+
+    --bg2: #061118;
+
+    --kas: #49eacb;
+
+    --kas-bright: #6dfce0;
+
+    --kas-dim: #2cb89e;
+
+    --gold: #f0c040;
+
+    --gold-dim: #c99b20;
+
+    --pearl: #e6f5ef;
+
+    --muted: rgba(230,245,239,.58);
+
+    --ghost: rgba(230,245,239,.32);
+
+    --fh: 'Syne', sans-serif;
+
+    --fb: 'Outfit', sans-serif;
+
+    --fm: 'JetBrains Mono', monospace;
+
+    --r1:#f0c040;
+  --r2:#c084fc;
+  --r3:#7dd3fc;
+  --r4:#60a5fa;
+  --r5:#34d399;
+
+    --r6:#4ade80;
+  --r7:#f472b6;
+  --r8:#fb923c;
+  --r9:#f9a8d4;
+  --r10:#94a3b8;
+  --r11:#64748b;
+
+}
+*,*::before,*::after {
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+html {
+  scroll-behavior:smooth
+}
+body {
+  font-family:var(--fb);
+  background:var(--bg);
+  color:var(--pearl);
+  overflow-x:hidden;
+  cursor:none;
+  -webkit-font-smoothing:antialiased
+}
+.kas-k-svg {
+  width:1em;
+  height:1em;
+  fill:currentColor;
+  display:inline-block;
+  vertical-align:middle
+}
+.nmark .kas-k-svg {
+  width:1.8rem;
+  height:1.8rem;
+  fill:var(--kas);
+  filter:drop-shadow(0 0 14px rgba(73,234,203,.9))
+}

@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+    <title>
+        KASRANK
+    </title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="src/css/tokens.css" rel="stylesheet"/>
+    <link href="src/css/base.css" rel="stylesheet"/>
+    <link href="src/css/nav.css" rel="stylesheet"/>
+    <link href="src/css/hero.css" rel="stylesheet"/>
+    <link href="src/css/sections.css" rel="stylesheet"/>
+    <link href="src/css/responsive.css" rel="stylesheet"/>
+
+    <style>
+        @media(max-width:1024px){
+          #traits{padding:80px 32px!important}
+          .tg4{grid-template-columns:repeat(2,1fr)!important}
+        }
+        @media(max-width:640px){
+          #traits{padding:60px 20px!important}
+          .tg4{grid-template-columns:repeat(2,1fr)!important}
+          .gg3{grid-template-columns:repeat(2,1fr)!important}
+        }
+    </style>
+</head>
+<body>
+<div id="cur">
+</div>
+<div id="cur-r">
+</div>
+<canvas id="bgc">
+</canvas>
+<nav id="nav">
+    <a class="nlogo" href="#">
+    <span class="nmark">
+     <svg class="kas-k-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="15.3 18.9 15.3 18.9 12.7 18.5 13.4 13.4 8 17.6 6.4 15.6 11.2 11.9 6.4 8.2 8 6.2 13.4 10.4 12.7 5.3 15.3 4.9 16.3 11.9 15.3 18.9">
+      </polygon>
+     </svg>
+    </span>
+        <div class="nword">
+            KAS
+            <b>
+                RANK
+            </b>
+        </div>
+    </a>
+    <ul class="nlinks">
+        <li>
+            <a href="#about">
+                About
+            </a>
+        </li>
+        <li>
+            <a href="#ranks">
+                Ranks
+            </a>
+        </li>
+        <li>
+            <a href="#rarity">
+                Rarity
+            </a>
+        </li>
+        <li>
+            <a href="#chain">
+                Kaspa
+            </a>
+        </li>
+        <li>
+            <a href="#community">
+                Community
+            </a>
+        </li>
+
+    </ul>
+    <a class="ncta" href="https://kaspa.com/nft/marketplace" target="_blank">
+        Explore collection →
+    </a>
+</nav>
+<section id="hero">
+    <div class="hbg1">
+    </div>
+    <div class="hbg2">
+    </div>
+    <div class="hbg3">
+    </div>
+    <div class="sl">
+    <span>
+    </span>
+        <span>
+    </span>
+        <span>
+    </span>
+    </div>
+    <div class="hero-l">
+        <div class="hbadge">
+     <span class="hdot">
+     </span>
+            KRC-721 · BlockDAG · PoW · 10 BPS
+        </div>
+        <h1 class="htitle">
+     <span class="l1">
+      KAS
+     </span>
+            <span class="l2">
+      RANK
+     </span>
+        </h1>
+        <div class="hlines">
+            <div class="hline hline-dim">
+                You don't choose your rank.
+            </div>
+            <div class="hline hline-bright">
+                Your wallet already did.
+            </div>
+            <div class="hline hline-kas">
+                782 creatures. 287 KAS. Mirrored into the DAG.
+            </div>
+        </div>
+        <p style="font-family:var(--fb);font-size:1.18rem;line-height:1.88;color:var(--muted);max-width:620px;margin-bottom:42px;opacity:0;animation:rise .8s .44s forwards;">
+            An NFT collection native to Kaspa. 11 ocean ranks. Your creature is decided by how much $KAS you hold — not by who got in first.
+        </p>
+        <div class="hacts">
+            <a class="btnp" href="https://x.com/Kas_Ranks" target="_blank">
+                𝕏 / Twitter
+            </a>
+            <a class="btnp" href="https://kaspa.com/nft/marketplace" target="_blank">
+                Fair Mint
+            </a>
+        </div>
+        <div class="hstats">
+            <div class="hs">
+                <strong>
+                    782
+                </strong>
+                <span class="hs-label">
+       Supply
+      </span>
+            </div>
+            <div class="hs">
+                <strong>
+                    287
+                    <span style="font-size:1rem;opacity:.55">
+        KAS
+       </span>
+                </strong>
+                <span class="hs-label">
+       Mint Price
+      </span>
+            </div>
+            <div class="hs">
+                <strong>
+                    11
+                </strong>
+                <span class="hs-label">
+       Ranks
+      </span>
+            </div>
+            <div class="hs">
+                <strong>
+                    L1
+                </strong>
+                <span class="hs-label">
+       Native DAG
+      </span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-r">
+        <canvas id="orbit-canvas">
+        </canvas>
+        <img alt="" class="canvas-mobile-fallback" id="orbit-snap"/>
+        <div id="orbit-tooltip">
+        </div>
+    </div>
+    <div class="hscroll">
+        <div class="vl">
+        </div>
+        <span>
+     Dive in
+    </span>
+    </div>
+</section>
+<div id="marquee">
+    <div class="mq-track">
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🧜
+     </span>
+            <span class="mq-name" style="color:var(--r1)">
+      Aquaman
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐋
+     </span>
+            <span class="mq-name" style="color:var(--r2)">
+      Humpback
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐳
+     </span>
+            <span class="mq-name" style="color:var(--r3)">
+      Blue Whale
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦈
+     </span>
+            <span class="mq-name" style="color:var(--r4)">
+      Shark
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐬
+     </span>
+            <span class="mq-name" style="color:var(--r5)">
+      Dolphin
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐟
+     </span>
+            <span class="mq-name" style="color:var(--r6)">
+      Fish
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐙
+     </span>
+            <span class="mq-name" style="color:var(--r7)">
+      Octopus
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦀
+     </span>
+            <span class="mq-name" style="color:var(--r8)">
+      Crab
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦐
+     </span>
+            <span class="mq-name" style="color:var(--r9)">
+      Shrimp
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦪
+     </span>
+            <span class="mq-name" style="color:var(--r10)">
+      Oyster
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦠
+     </span>
+            <span class="mq-name" style="color:var(--r11)">
+      Plankton
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🧜
+     </span>
+            <span class="mq-name" style="color:var(--r1)">
+      Aquaman
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐋
+     </span>
+            <span class="mq-name" style="color:var(--r2)">
+      Humpback
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐳
+     </span>
+            <span class="mq-name" style="color:var(--r3)">
+      Blue Whale
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦈
+     </span>
+            <span class="mq-name" style="color:var(--r4)">
+      Shark
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐬
+     </span>
+            <span class="mq-name" style="color:var(--r5)">
+      Dolphin
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐟
+     </span>
+            <span class="mq-name" style="color:var(--r6)">
+      Fish
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🐙
+     </span>
+            <span class="mq-name" style="color:var(--r7)">
+      Octopus
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦀
+     </span>
+            <span class="mq-name" style="color:var(--r8)">
+      Crab
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦐
+     </span>
+            <span class="mq-name" style="color:var(--r9)">
+      Shrimp
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦪
+     </span>
+            <span class="mq-name" style="color:var(--r10)">
+      Oyster
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+        <div class="mq-item">
+     <span class="mq-emoji">
+      🦠
+     </span>
+            <span class="mq-name" style="color:var(--r11)">
+      Plankton
+     </span>
+        </div>
+        <span class="mq-sep">
+     ◆
+    </span>
+    </div>
+</div>
+<div id="strip">
+    <div class="strip-in">
+        <div class="ksp">
+            <div class="kspv" style="line-height:1.2">
+                <svg class="kas-k-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="15.3 18.9 15.3 18.9 12.7 18.5 13.4 13.4 8 17.6 6.4 15.6 11.2 11.9 6.4 8.2 8 6.2 13.4 10.4 12.7 5.3 15.3 4.9 16.3 11.9 15.3 18.9">
+                    </polygon>
+                </svg>
+            </div>
+            <div class="kspl">
+                Silver in Aramaic. Gold on the DAG.
+            </div>
+        </div>
+        <div class="ksp">
+            <div class="kspv">
+                GHOST
+                <span style="color:var(--pearl);font-size:1.5rem">
+       DAG
+      </span>
+            </div>
+            <div class="kspl">
+                Blocks run parallel. Consensus holds.
+            </div>
+        </div>
+        <div class="ksp">
+            <div class="kspv">
+                100
+                <span style="font-size:1.3rem;color:var(--muted)">
+       BPS
+      </span>
+            </div>
+            <div class="kspl">
+                DAGKnight territory. Not theory.
+            </div>
+        </div>
+        <div class="ksp">
+            <div class="kspv">
+                L1
+            </div>
+            <div class="kspl">
+                No bridges. No layers. Pure DAG.
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:60px">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        What is this
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="about">
+    <div class="amb">
+    </div>
+    <div class="abl">
+        <div class="abn">
+            11
+        </div>
+        <span class="lbl" style="font-size:.88rem;letter-spacing:4px">
+     The Concept
+    </span>
+        <h2 class="abh">
+            Your bag speaks.
+            <br/>
+            <em>
+                Your rank listens.
+            </em>
+        </h2>
+        <p class="abp">
+            Everyone in crypto talks about being a whale, a shrimp, a plankton. KASRANK makes it
+            <strong>
+                real
+            </strong>
+            . Your bag gets checked. Your creature gets assigned. You wear what you earned.
+        </p>
+        <p class="abp">
+            11 sea creatures. From the Aquaman who sits alone at the top, to the Plankton still figuring it out. Each one handcrafted. Each one a
+            <strong>
+                flex you can't fake
+            </strong>
+            .
+        </p>
+        <div class="abtag">
+            <svg style="width:2.2em;height:2.2em;fill:var(--kas);display:inline-block;vertical-align:middle;filter:drop-shadow(0 0 14px rgba(73,234,203,1)) drop-shadow(0 0 6px rgba(73,234,203,.8))" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="15.3 18.9 15.3 18.9 12.7 18.5 13.4 13.4 8 17.6 6.4 15.6 11.2 11.9 6.4 8.2 8 6.2 13.4 10.4 12.7 5.3 15.3 4.9 16.3 11.9 15.3 18.9">
+                </polygon>
+            </svg>
+            Native on Kaspa · Secured by PoW · Confirmed before you refresh
+        </div>
+    </div>
+    <div>
+        <div class="dagwrap">
+            <img alt="" class="canvas-mobile-fallback" id="adag-snap"/>
+            <canvas id="adag">
+            </canvas>
+        </div>
+    </div>
+</section>
+<div style="height:40px">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        The Food Chain
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="ranks">
+    <div class="rhd">
+        <div class="supbadge">
+            ⬡ 782 Total · 287 KAS Each
+        </div>
+        <div style="font-family:var(--fh);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line-height:.95;letter-spacing:-2px;color:var(--kas);margin-bottom:12px;text-shadow:0 0 60px rgba(73,234,203,.3)">
+            The Hierarchy
+        </div>
+        <h2 class="sec-t" style="font-size:clamp(4rem,8vw,7.5rem);letter-spacing:-4px">
+            Know
+            <em>
+                Your Place
+            </em>
+        </h2>
+        <p>
+            The ocean doesn't care about your opinions. It cares about your bag. These are the 11 ranks — The DAG doesn't lie.
+        </p>
+    </div>
+    <div class="solo-w">
+        <div class="rc-solo">
+            <div class="rbg-s">
+                Legendary
+            </div>
+            <div class="rt-solo">
+                Tier I — Supreme
+            </div>
+            <div class="re-solo">
+                🧜
+            </div>
+            <div class="rn-solo">
+                Aquaman
+            </div>
+            <div class="rd-solo">
+                Doesn't swim with the rest.
+                <br/>
+                The rest swim with him.
+            </div>
+        </div>
+    </div>
+    <div class="rgrid">
+        <div class="rc" style="--rcc:var(--r2)">
+            <div class="rbg">
+                Epic
+            </div>
+            <div class="rnum">
+                2
+            </div>
+            <div class="rtier">
+                Tier II — Leviathan
+            </div>
+            <div class="re">
+                🐋
+            </div>
+            <div class="rn">
+                Humpback Whale
+            </div>
+            <div class="rd">
+                Surfaces once. Everyone notices.
+                <br/>
+                The weight behind the wave.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r3)">
+            <div class="rbg">
+                Epic
+            </div>
+            <div class="rnum">
+                3
+            </div>
+            <div class="rtier">
+                Tier III — Apex
+            </div>
+            <div class="re">
+                🐳
+            </div>
+            <div class="rn">
+                Blue Whale
+            </div>
+            <div class="rd">
+                Doesn't chase. Doesn't need to.
+                <br/>
+                The market moves around him.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r4)">
+            <div class="rbg">
+                Rare
+            </div>
+            <div class="rnum">
+                4
+            </div>
+            <div class="rtier">
+                Tier IV — Predator
+            </div>
+            <div class="re">
+                🦈
+            </div>
+            <div class="rn">
+                Shark
+            </div>
+            <div class="rd">
+                Smells blood three dips ago.
+                <br/>
+                Already positioned.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r5)">
+            <div class="rbg">
+                Rare
+            </div>
+            <div class="rnum">
+                5
+            </div>
+            <div class="rtier">
+                Tier V — Smart
+            </div>
+            <div class="re">
+                🐬
+            </div>
+            <div class="rn">
+                Dolphin
+            </div>
+            <div class="rd">
+                Plays the waves others drown in.
+                <br/>
+                Smart money, smooth entry.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r6)">
+            <div class="rbg">
+                Uncommon
+            </div>
+            <div class="rnum">
+                6
+            </div>
+            <div class="rtier">
+                Tier VI — Swimmer
+            </div>
+            <div class="re">
+                🐟
+            </div>
+            <div class="rn">
+                Fish
+            </div>
+            <div class="rd">
+                Moves with the current.
+                <br/>
+                Not flashy, but always in the water.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r7)">
+            <div class="rbg">
+                Uncommon
+            </div>
+            <div class="rnum">
+                7
+            </div>
+            <div class="rtier">
+                Tier VII — Depths
+            </div>
+            <div class="re">
+                🐙
+            </div>
+            <div class="rn">
+                Octopus
+            </div>
+            <div class="rd">
+                Eight arms in eight plays.
+                <br/>
+                You never see the full picture.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r8)">
+            <div class="rbg">
+                Common
+            </div>
+            <div class="rnum">
+                8
+            </div>
+            <div class="rtier">
+                Tier VIII — Floor
+            </div>
+            <div class="re">
+                🦀
+            </div>
+            <div class="rn">
+                Crab
+            </div>
+            <div class="rd">
+                Moves sideways. Gets memed.
+                <br/>
+                Still here though. Still holding.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r9)">
+            <div class="rbg">
+                Common
+            </div>
+            <div class="rnum">
+                9
+            </div>
+            <div class="rtier">
+                Tier IX — Starter
+            </div>
+            <div class="re">
+                🦐
+            </div>
+            <div class="rn">
+                Shrimp
+            </div>
+            <div class="rd">
+                Small bag, loud opinions.
+                <br/>
+                Every whale started here.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r10)">
+            <div class="rbg">
+                Common
+            </div>
+            <div class="rnum">
+                10
+            </div>
+            <div class="rtier">
+                Tier X — Seabed
+            </div>
+            <div class="re">
+                🦪
+            </div>
+            <div class="rn">
+                Oyster
+            </div>
+            <div class="rd">
+                Shut tight. Not selling.
+                <br/>
+                Something's forming inside.
+            </div>
+        </div>
+        <div class="rc" style="--rcc:var(--r11)">
+            <div class="rbg">
+                Origin
+            </div>
+            <div class="rnum">
+                11
+            </div>
+            <div class="rtier">
+                Tier XI — Genesis
+            </div>
+            <div class="re">
+                🦠
+            </div>
+            <div class="rn">
+                Plankton
+            </div>
+            <div class="rd">
+                Bottom of the food chain.
+                <br/>
+                But every ecosystem starts here.
+            </div>
+        </div>
+    </div>
+</section>
+<div style="height:40px">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        287 ↔ 782
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="story">
+    <div class="story-inner">
+        <div class="story-big">
+     <span class="lbl">
+      The Numbers
+     </span>
+            <div class="story-num">
+                287
+            </div>
+            <div class="story-sub">
+                The numbers aren't random.
+                <br/>
+                They're Kaspa's DNA.
+            </div>
+            <p class="story-p">
+                <strong>
+                    28.7 billion
+                </strong>
+                — that's the total KAS supply. Strip the zeros:
+                <strong>
+                    287
+                </strong>
+                . That's your mint price. Now read it backward:
+                <strong>
+                    782
+                </strong>
+                . That's the total supply of KASRANK. Same three digits, one forward, one reversed. Price mirrors supply. Supply mirrors the DAG.
+                <br/>
+                <br/>
+                The kind of thing people notice and never shut up about.
+            </p>
+        </div>
+        <div class="story-grid">
+            <div class="story-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+                <div class="sc-v" style="font-size:3.5rem;letter-spacing:-2px;">
+                    287 ↔ 782
+                </div>
+                <div class="sc-l" style="margin:10px 0 8px;">
+                    Mirrored
+                </div>
+                <div class="sc-d">
+                    Price and supply are the same digits reversed.
+                    <br/>
+                    Embedded in the DAG forever.
+                </div>
+            </div>
+            <div class="story-card" style="position:relative;overflow:hidden;padding:28px 34px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;">
+                <div style="font-family:var(--fm);font-size:.72rem;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;text-align:center">
+                    What rank are you?
+                </div>
+                <div class="roulette-wrap" id="roulette-wrap" style="display:flex;align-items:center;gap:20px;margin-bottom:18px;">
+                    <div class="roulette-disp" id="roulette-display">
+                        <svg id="roulette-k" style="width:72px;height:72px;fill:var(--kas);filter:drop-shadow(0 0 18px rgba(73,234,203,.9))" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="15.3 18.9 15.3 18.9 12.7 18.5 13.4 13.4 8 17.6 6.4 15.6 11.2 11.9 6.4 8.2 8 6.2 13.4 10.4 12.7 5.3 15.3 4.9 16.3 11.9 15.3 18.9">
+                            </polygon>
+                        </svg>
+                    </div>
+                    <div>
+                        <div id="roulette-name" style="font-family:var(--fh);font-size:1.5rem;font-weight:800;color:var(--kas);letter-spacing:-.5px;min-width:140px">
+                            Spin to find out
+                        </div>
+                        <div id="roulette-tier" style="font-family:var(--fm);font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:4px">
+                        </div>
+                    </div>
+                </div>
+                <button id="roulette-btn" onclick="spinRoulette(event)" ontouchend="spinRoulette(event)" style="font-family:var(--fm);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;padding:13px 34px;background:transparent;border:1px solid rgba(73,234,203,.4);color:var(--kas);cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:rgba(73,234,203,.2);touch-action:manipulation;">
+                    Spin the Ocean ↻
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<div style="height:40px">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        How Rare Is Yours
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="rarity">
+   <span class="lbl">
+    Not Everyone Gets to Be a Whale
+   </span>
+    <h2 class="sec-t" style="font-size:clamp(3.5rem,7vw,6.5rem);letter-spacing:-3px;margin-bottom:10px">
+        Rarity
+        <em>
+            Hits Different
+        </em>
+    </h2>
+    <div class="rrows" id="rrows">
+        <div class="rrow" data-pct="1">
+            <div class="rre">
+                🧜
+            </div>
+            <div class="rrn" style="color:var(--r1)">
+                Aquaman
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r1)">
+                </div>
+            </div>
+            <div class="rrp">
+                1% · 8
+            </div>
+        </div>
+        <div class="rrow" data-pct="2">
+            <div class="rre">
+                🐋
+            </div>
+            <div class="rrn" style="color:var(--r2)">
+                Humpback Whale
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r2)">
+                </div>
+            </div>
+            <div class="rrp">
+                2% · 16
+            </div>
+        </div>
+        <div class="rrow" data-pct="4">
+            <div class="rre">
+                🐳
+            </div>
+            <div class="rrn" style="color:var(--r3)">
+                Blue Whale
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r3)">
+                </div>
+            </div>
+            <div class="rrp">
+                4% · 31
+            </div>
+        </div>
+        <div class="rrow" data-pct="6">
+            <div class="rre">
+                🦈
+            </div>
+            <div class="rrn" style="color:var(--r4)">
+                Shark
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r4)">
+                </div>
+            </div>
+            <div class="rrp">
+                6% · 47
+            </div>
+        </div>
+        <div class="rrow" data-pct="8">
+            <div class="rre">
+                🐬
+            </div>
+            <div class="rrn" style="color:var(--r5)">
+                Dolphin
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r5)">
+                </div>
+            </div>
+            <div class="rrp">
+                8% · 63
+            </div>
+        </div>
+        <div class="rrow" data-pct="10">
+            <div class="rre">
+                🐟
+            </div>
+            <div class="rrn" style="color:var(--r6)">
+                Fish
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r6)">
+                </div>
+            </div>
+            <div class="rrp">
+                10% · 78
+            </div>
+        </div>
+        <div class="rrow" data-pct="11">
+            <div class="rre">
+                🐙
+            </div>
+            <div class="rrn" style="color:var(--r7)">
+                Octopus
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r7)">
+                </div>
+            </div>
+            <div class="rrp">
+                11% · 86
+            </div>
+        </div>
+        <div class="rrow" data-pct="13">
+            <div class="rre">
+                🦀
+            </div>
+            <div class="rrn" style="color:var(--r8)">
+                Crab
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r8)">
+                </div>
+            </div>
+            <div class="rrp">
+                13% · 102
+            </div>
+        </div>
+        <div class="rrow" data-pct="14">
+            <div class="rre">
+                🦐
+            </div>
+            <div class="rrn" style="color:var(--r9)">
+                Shrimp
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r9)">
+                </div>
+            </div>
+            <div class="rrp">
+                14% · 109
+            </div>
+        </div>
+        <div class="rrow" data-pct="15">
+            <div class="rre">
+                🦪
+            </div>
+            <div class="rrn" style="color:var(--r10)">
+                Oyster
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r10)">
+                </div>
+            </div>
+            <div class="rrp">
+                15% · 117
+            </div>
+        </div>
+        <div class="rrow" data-pct="16">
+            <div class="rre">
+                🦠
+            </div>
+            <div class="rrn" style="color:var(--r11)">
+                Plankton
+            </div>
+            <div class="rrbw">
+                <div class="rrb" style="background:var(--r11)">
+                </div>
+            </div>
+            <div class="rrp">
+                16% · 125
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="height:40px"></div>
+<div class="dv">
+    <div class="dvb"></div>
+    <div class="dvt">Under the Surface</div>
+    <div class="dvb"></div>
+</div>
+<div style="height:20px"></div>
+
+<section id="traits" style="position:relative;z-index:1;padding:100px 56px;max-width:1400px;margin:0 auto">
+
+    <div style="text-align:center;margin-bottom:60px">
+        <span class="lbl">The Art</span>
+        <h2 class="sec-t">Built From the <em>Deep</em></h2>
+        <p style="color:var(--muted);font-family:var(--fb);font-size:1.06rem;font-weight:400;max-width:560px;margin:0 auto;line-height:1.85">
+            Every KASRANK has a form. Some are one of one. Some are stripped clean. Some run deep with Kaspa. All live in the DAG.
+        </p>
+    </div>
+
+    <div class="tg4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:60px">
+
+        <div style="background:rgba(6,17,24,.97);border:1px solid rgba(255,255,255,.05);border-top:2px solid var(--gold);padding:44px 22px 36px;text-align:center;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(240,192,64,.1) 0%,transparent 58%);pointer-events:none"></div>
+            <div style="font-family:var(--fh);font-size:2.6rem;font-weight:800;color:var(--gold);line-height:1;margin-bottom:6px;text-shadow:0 0 45px rgba(240,192,64,.35);position:relative">11</div>
+            <div style="font-family:var(--fm);font-size:.64rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;position:relative">Across 782</div>
+            <div style="font-family:var(--fh);font-size:1.3rem;font-weight:700;color:var(--pearl);margin-bottom:8px;letter-spacing:-.3px;position:relative">1/1 Unique</div>
+            <div style="font-family:var(--fm);font-size:.72rem;letter-spacing:.7px;color:var(--muted);line-height:1.75;position:relative">One per creature. One in existence. The piece collectors lose sleep over.</div>
+        </div>
+
+        <div style="background:rgba(6,17,24,.97);border:1px solid rgba(255,255,255,.05);border-top:2px solid var(--pearl);padding:44px 22px 36px;text-align:center;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(230,245,239,.06) 0%,transparent 58%);pointer-events:none"></div>
+            <div style="font-family:var(--fh);font-size:2.6rem;font-weight:800;color:var(--pearl);line-height:1;margin-bottom:6px;text-shadow:0 0 45px rgba(230,245,239,.2);position:relative">11</div>
+            <div style="font-family:var(--fm);font-size:.64rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;position:relative">Across 782</div>
+            <div style="font-family:var(--fh);font-size:1.3rem;font-weight:700;color:var(--pearl);margin-bottom:8px;letter-spacing:-.3px;position:relative">Base</div>
+            <div style="font-family:var(--fm);font-size:.72rem;letter-spacing:.7px;color:var(--muted);line-height:1.75;position:relative">No traits. No noise. Just the creature in its purest form.</div>
+        </div>
+
+        <div style="background:rgba(6,17,24,.97);border:1px solid rgba(255,255,255,.05);border-top:2px solid var(--kas);padding:44px 22px 36px;text-align:center;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(73,234,203,.08) 0%,transparent 58%);pointer-events:none"></div>
+            <div style="font-family:var(--fh);font-size:2.6rem;font-weight:800;color:var(--kas);line-height:1;margin-bottom:6px;text-shadow:0 0 45px rgba(73,234,203,.4);position:relative">157</div>
+            <div style="font-family:var(--fm);font-size:.64rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;position:relative">~20% of supply</div>
+            <div style="font-family:var(--fh);font-size:1.3rem;font-weight:700;color:var(--pearl);margin-bottom:8px;letter-spacing:-.3px;position:relative">Kas-Themed</div>
+            <div style="font-family:var(--fm);font-size:.72rem;letter-spacing:.7px;color:var(--muted);line-height:1.75;position:relative">Teal highlights. DAG geometry. Block structure embedded into the creature. Kaspa runs through it.</div>
+        </div>
+
+        <div style="background:rgba(6,17,24,.97);border:1px solid rgba(255,255,255,.05);border-top:2px solid var(--ghost);padding:44px 22px 36px;text-align:center;position:relative;overflow:hidden">
+            <div style="font-family:var(--fh);font-size:2.6rem;font-weight:800;color:var(--ghost);line-height:1;margin-bottom:6px;position:relative">603</div>
+            <div style="font-family:var(--fm);font-size:.64rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;position:relative">~77% of supply</div>
+            <div style="font-family:var(--fh);font-size:1.3rem;font-weight:700;color:var(--pearl);margin-bottom:8px;letter-spacing:-.3px;position:relative">Trait Combos</div>
+            <div style="font-family:var(--fm);font-size:.72rem;letter-spacing:.7px;color:var(--muted);line-height:1.75;position:relative">Traits pulled from the same pool. The outcome never repeats. What you mint is what remains.</div>
+        </div>
+
+    </div>
+
+    <div style="text-align:center;margin-bottom:32px">
+        <h3 class="sec-b">
+            Straight From the <em style="color:var(--kas);font-style:normal">Deep</em>
+        </h3>
+    </div>
+
+    <div class="gg3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;max-width:900px;margin:0 auto">
+
+        <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid rgba(255,255,255,.05);background:rgba(6,17,24,.97);cursor:pointer">
+            <div class="gi-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(240,192,64,.04),rgba(240,192,64,.01))">
+                <div style="font-size:2.8rem;opacity:.4">🧜</div>
+                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--ghost)">1/1 Unique</div>
+            </div>
+            <div style="position:absolute;top:10px;left:10px;font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;background:rgba(2,11,17,.75);border:1px solid rgba(240,192,64,.25);color:var(--gold);backdrop-filter:blur(6px)">1/1</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(2,11,17,.85));font-family:var(--fh);font-size:.8rem;font-weight:600;color:var(--pearl);display:flex;align-items:center;gap:6px">
+                <span style="font-size:1rem">🧜</span>Aquaman
+                <span style="font-family:var(--fm);font-size:.45rem;letter-spacing:2px;text-transform:uppercase;color:var(--ghost);margin-left:auto">Unique</span>
+            </div>
+        </div>
+
+        <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid rgba(255,255,255,.05);background:rgba(6,17,24,.97);cursor:pointer">
+            <div class="gi-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(230,245,239,.04),rgba(230,245,239,.01))">
+                <div style="font-size:2.8rem;opacity:.4">🦈</div>
+                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--ghost)">Base</div>
+            </div>
+            <div style="position:absolute;top:10px;left:10px;font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;background:rgba(2,11,17,.75);border:1px solid rgba(230,245,239,.2);color:var(--pearl);backdrop-filter:blur(6px)">Base</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(2,11,17,.85));font-family:var(--fh);font-size:.8rem;font-weight:600;color:var(--pearl);display:flex;align-items:center;gap:6px">
+                <span style="font-size:1rem">🦈</span>Shark
+                <span style="font-family:var(--fm);font-size:.45rem;letter-spacing:2px;text-transform:uppercase;color:var(--ghost);margin-left:auto">Pure</span>
+            </div>
+        </div>
+
+        <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid rgba(255,255,255,.05);background:rgba(6,17,24,.97);cursor:pointer">
+            <div class="gi-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(73,234,203,.04),rgba(73,234,203,.01))">
+                <div style="font-size:2.8rem;opacity:.4">🐳</div>
+                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--ghost)">Kas Trait</div>
+            </div>
+            <div style="position:absolute;top:10px;left:10px;font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;background:rgba(2,11,17,.75);border:1px solid rgba(73,234,203,.25);color:var(--kas);backdrop-filter:blur(6px)">Kas</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(2,11,17,.85));font-family:var(--fh);font-size:.8rem;font-weight:600;color:var(--pearl);display:flex;align-items:center;gap:6px">
+                <span style="font-size:1rem">🐳</span>Blue Whale
+                <span style="font-family:var(--fm);font-size:.45rem;letter-spacing:2px;text-transform:uppercase;color:var(--ghost);margin-left:auto">Kas DNA</span>
+            </div>
+        </div>
+
+        <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid rgba(255,255,255,.05);background:rgba(6,17,24,.97);cursor:pointer">
+            <div class="gi-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(73,234,203,.02),rgba(6,17,24,.5))">
+                <div style="font-size:2.8rem;opacity:.4">🦀</div>
+                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--ghost)">Traits</div>
+            </div>
+            <div style="position:absolute;top:10px;left:10px;font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;background:rgba(2,11,17,.75);border:1px solid rgba(230,245,239,.1);color:var(--muted);backdrop-filter:blur(6px)">Traits</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(2,11,17,.85));font-family:var(--fh);font-size:.8rem;font-weight:600;color:var(--pearl);display:flex;align-items:center;gap:6px">
+                <span style="font-size:1rem">🦀</span>Crab
+                <span style="font-family:var(--fm);font-size:.45rem;letter-spacing:2px;text-transform:uppercase;color:var(--ghost);margin-left:auto">Combo</span>
+            </div>
+        </div>
+
+        <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid rgba(255,255,255,.05);background:rgba(6,17,24,.97);cursor:pointer">
+            <div class="gi-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(73,234,203,.04),rgba(73,234,203,.01))">
+                <div style="font-size:2.8rem;opacity:.4">🐙</div>
+                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--ghost)">Kas Trait</div>
+            </div>
+            <div style="position:absolute;top:10px;left:10px;font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;background:rgba(2,11,17,.75);border:1px solid rgba(73,234,203,.25);color:var(--kas);backdrop-filter:blur(6px)">Kas</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(2,11,17,.85));font-family:var(--fh);font-size:.8rem;font-weight:600;color:var(--pearl);display:flex;align-items:center;gap:6px">
+                <span style="font-size:1rem">🐙</span>Octopus
+                <span style="font-family:var(--fm);font-size:.45rem;letter-spacing:2px;text-transform:uppercase;color:var(--ghost);margin-left:auto">Kas DNA</span>
+            </div>
+        </div>
+
+        <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid rgba(255,255,255,.05);background:rgba(6,17,24,.97);cursor:pointer">
+            <div class="gi-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(73,234,203,.02),rgba(6,17,24,.5))">
+                <div style="font-size:2.8rem;opacity:.4">🦠</div>
+                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--ghost)">Traits</div>
+            </div>
+            <div style="position:absolute;top:10px;left:10px;font-family:var(--fm);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;background:rgba(2,11,17,.75);border:1px solid rgba(230,245,239,.1);color:var(--muted);backdrop-filter:blur(6px)">Traits</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(2,11,17,.85));font-family:var(--fh);font-size:.8rem;font-weight:600;color:var(--pearl);display:flex;align-items:center;gap:6px">
+                <span style="font-size:1rem">🦠</span>Plankton
+                <span style="font-family:var(--fm);font-size:.45rem;letter-spacing:2px;text-transform:uppercase;color:var(--ghost);margin-left:auto">Combo</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div style="height:40px">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        The DAG Under This
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="chain">
+    <div class="chw">
+        <div class="chd">
+     <span class="lbl" style="font-size:1rem;letter-spacing:4px">
+      Why Kaspa?
+     </span>
+            <h2 class="sec-t">
+                Because nothing else
+                <br/>
+                <em>
+                    is fast enough.
+                </em>
+            </h2>
+            <p class="chi">
+                Not a fork. Not a clone. No premine. No ICO. Built from scratch — PoW, parallel blocks, and a roadmap that doesn't slow. Your KASRANK gets confirmed while other chains are still thinking about it.
+            </p>
+        </div>
+        <div class="chtop">
+            <div class="dagl">
+                <canvas id="mdag">
+                </canvas>
+                <img alt="" class="canvas-mobile-fallback" id="mdag-snap"/>
+                <div class="dag-lb">
+                    BlockDAG · Live Sim
+                </div>
+                <div class="dag-bps" id="bpsc">
+                    10 BPS
+                </div>
+                <div class="dann dann1">
+                    parallel blocks
+                </div>
+                <div class="dann dann3">
+                    DAG structure
+                </div>
+            </div>
+            <div class="chnums">
+                <div class="cni">
+                    <div class="cnv">
+                        10
+                    </div>
+                    <div class="cnu">
+                        BPS
+                    </div>
+                    <div class="cnl">
+                        Happening right now. Every second.
+                    </div>
+                </div>
+                <div class="cni">
+                    <div class="cnv">
+                        100
+                    </div>
+                    <div class="cnu">
+                        BPS
+                    </div>
+                    <div class="cnl">
+                        Post-hardfork. The math checks out.
+                    </div>
+                </div>
+                <div class="cni">
+                    <div class="cnv">
+                        &lt;$0.001
+                    </div>
+                    <div class="cnu">
+                        Fee
+                    </div>
+                    <div class="cnl">
+                        Cheaper than thinking about it.
+                    </div>
+                </div>
+                <div class="cni">
+                    <div class="cnv">
+                        L1
+                    </div>
+                    <div class="cnu">
+                        Native
+                    </div>
+                    <div class="cnl">
+                        No bridges. No workarounds. Home.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ctl">
+            <div class="cc ccl">
+                <div class="ccst">
+                    Live
+                </div>
+                <div class="ccico">
+                    🔷
+                </div>
+                <h3 class="ccn">
+                    GHOSTDAG
+                </h3>
+                <p class="ccd">
+                    Blocks don't wait in line. They run in parallel. Consensus still holds.
+                </p>
+                <div class="ccps">
+       <span class="ccp">
+        Parallel Blocks
+       </span>
+                    <span class="ccp">
+        PoW
+       </span>
+                </div>
+            </div>
+            <div class="cta-arrow">
+                →
+            </div>
+            <div class="cc ccl">
+                <div class="ccst">
+                    Live · May 2025
+                </div>
+                <div class="ccico">
+                    ⚡
+                </div>
+                <h3 class="ccn">
+                    Crescendo
+                </h3>
+                <p class="ccd">
+                    Went from 1 to
+                    <strong>
+                        10 BPS.
+                    </strong>
+                    Full Rust rewrite. The glow-up was real.
+                </p>
+                <div class="ccps">
+       <span class="ccp">
+        10 BPS
+       </span>
+                    <span class="ccp">
+        Rust Node
+       </span>
+                </div>
+            </div>
+            <div class="cta-arrow">
+                →
+            </div>
+            <div class="cc ccs">
+                <div class="ccst">
+                    Coming Soon
+                </div>
+                <div class="ccico">
+                    🗡️
+                </div>
+                <h3 class="ccn">
+                    DAGKnight
+                </h3>
+                <p class="ccd">
+                    No fixed parameters. The protocol
+                    <em>
+                        adapts
+                    </em>
+                    . Unlocks the path to
+                    <strong>
+                        100 BPS
+                    </strong>
+                    .
+                </p>
+                <div class="ccps">
+       <span class="ccp">
+        100 BPS
+       </span>
+                    <span class="ccp">
+        50% BFT
+       </span>
+                </div>
+            </div>
+            <div class="cta-arrow">
+                →
+            </div>
+            <div class="cc ccs">
+                <div class="ccst">
+                    Coming Soon
+                </div>
+                <div class="ccico">
+                    🔮
+                </div>
+                <h3 class="ccn">
+                    vProgs
+                </h3>
+                <p class="ccd">
+                    True L1 smart contracts — ZK-verified, no bridges, no middlemen. Plug-and-play programmability built directly into the DAG. The last upgrade Kaspa will ever need.
+                </p>
+                <div class="ccps">
+       <span class="ccp">
+        L1 Native
+       </span>
+                    <span class="ccp">
+        ZK Verified
+       </span>
+                    <span class="ccp">
+        Plug &amp; Play
+       </span>
+                </div>
+            </div>
+        </div>
+        <div class="cfound">
+     <span class="lbl" style="margin-bottom:22px">
+      The Brains Behind Kaspa
+     </span>
+            <div class="cfc">
+                <div class="cfcard">
+                    <div class="cfav">
+                        𐤊
+                    </div>
+                    <div>
+                        <div class="cfn">
+                            Yonatan Sompolinsky
+                        </div>
+                        <div class="cfh">
+                            @hashdag
+                        </div>
+                        <p class="cfb">
+                            Wrote the math behind GHOSTDAG and DAGKnight. Most people write papers. He built a protocol around his.
+                        </p>
+                    </div>
+                </div>
+                <div class="cfdiv">
+                </div>
+                <div class="cfcard">
+                    <div class="cfav">
+                        ⚙️
+                    </div>
+                    <div>
+                        <div class="cfn">
+                            Michael Sutton
+                        </div>
+                        <div class="cfh">
+                            @michaelsuttonil
+                        </div>
+                        <p class="cfb">
+                            Rewrote the entire node in Rust to hit 10 BPS. The reason the theory actually works in production.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cprow">
+            <div class="cp">
+                GHOSTDAG
+            </div>
+            <div class="cp">
+                10 BPS · Live
+            </div>
+            <div class="cp">
+                DAGKnight
+            </div>
+            <div class="cp">
+                vProgs · L1
+            </div>
+            <div class="cp">
+                Proof of Work
+            </div>
+            <div class="cp">
+                Fair Launch
+            </div>
+            <div class="cp">
+                No Premine
+            </div>
+            <div class="cp">
+                𐤊 Native $KAS
+            </div>
+            <div class="cp">
+                Rust Node
+            </div>
+        </div>
+    </div>
+</section>
+<div style="height:40px">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        Holder Community
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="community">
+    <div class="community-grid">
+        <div>
+     <span class="lbl">
+      Holders Only
+     </span>
+            <h2 class="sec-t">
+                The Ocean
+                <br/>
+                <em>
+                    Has a Group Chat.
+                </em>
+            </h2>
+            <p style="color:var(--muted);font-family:var(--fb);font-size:1.06rem;line-height:1.88;margin-bottom:16px;">
+                One community. Holders only. The link doesn't get posted publicly — it gets sent directly to your wallet via
+                <strong style="color:var(--kas)">
+                    Kasia
+                </strong>
+                , Kaspa's native wallet messaging app. You hold a KASRANK, you're in. Higher ranks get priority on future drops.
+            </p>
+            <p style="color:var(--muted);font-family:var(--fb);font-size:.95rem;line-height:1.75;margin-bottom:28px;padding:14px 18px;border:1px solid rgba(73,234,203,.1);background:rgba(73,234,203,.03);">
+                📨 Mint → your wallet gets a Kasia message → private holder link lands. No screenshots. No leaks. No outsiders.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:3px;">
+                <div class="comm-row">
+                    <div class="comm-tier" style="--cc:var(--r1)">
+        <span>
+         🧜
+        </span>
+                        <span>
+         Aquaman
+        </span>
+                    </div>
+                    <div class="comm-access">
+                        Holders TG · future drop priority + goodies
+                    </div>
+                    <div class="comm-badge" style="border-color:rgba(240,192,64,.4);color:var(--r1)">
+                        VIP
+                    </div>
+                </div>
+                <div class="comm-row">
+                    <div class="comm-tier" style="--cc:var(--r2)">
+        <span>
+         🐋
+        </span>
+                        <span>
+         Humpback
+        </span>
+                    </div>
+                    <div class="comm-access">
+                        Holders TG · future drop priority + goodies
+                    </div>
+                    <div class="comm-badge" style="border-color:rgba(192,132,252,.4);color:var(--r2)">
+                        VIP
+                    </div>
+                </div>
+                <div class="comm-row">
+                    <div class="comm-tier" style="--cc:var(--r3)">
+        <span>
+         🐳
+        </span>
+                        <span>
+         Blue Whale
+        </span>
+                    </div>
+                    <div class="comm-access">
+                        Holders TG · future drop priority + goodies
+                    </div>
+                    <div class="comm-badge" style="border-color:rgba(125,211,252,.4);color:var(--r3)">
+                        VIP
+                    </div>
+                </div>
+                <div class="comm-row">
+                    <div class="comm-tier" style="--cc:var(--kas)">
+        <span>
+         🦈🐬🐟🐙
+        </span>
+                    </div>
+                    <div class="comm-access">
+                        Holders TG · future drop
+                    </div>
+                    <div class="comm-badge">
+                        VIP
+                    </div>
+                </div>
+                <div class="comm-row">
+                    <div class="comm-tier" style="--cc:var(--r9)">
+        <span>
+         🦀🦐🦪🦠
+        </span>
+                    </div>
+                    <div class="comm-access">
+                        Holders TG · future drop
+                    </div>
+                    <div class="comm-badge">
+                        VIP
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;align-self:stretch;">
+            <div class="comm-card">
+                <div class="comm-card-icon">
+                    📸
+                </div>
+                <div>
+                    <div class="comm-card-t">
+                        Monthly Ocean Rankings
+                    </div>
+                    <div class="comm-card-d">
+                        Every month, a snapshot of all holders goes out. Your rank, your creature, on the record.
+                    </div>
+                </div>
+            </div>
+            <div class="comm-card">
+                <div class="comm-card-icon">
+                    🎯
+                </div>
+                <div>
+                    <div class="comm-card-t">
+                        Future Drop Priority
+                    </div>
+                    <div class="comm-card-d">
+                        Every snapshot locks you in. Holders get first access to whatever KASRANK drops next. No promises on what — just that you're not on the outside.
+                    </div>
+                </div>
+            </div>
+            <div class="comm-card">
+                <div class="comm-card-icon">
+                    💬
+                </div>
+                <div>
+                    <div class="comm-card-t">
+                        Holders-Only Chat
+                    </div>
+                    <div class="comm-card-d">
+                        Every holder gets a private channel link delivered straight to their wallet via Kasia. No public posting. No outsiders. You hold it, you're in.
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">
+                <a class="btnp" href="https://t.me/Kas_Ranks" target="_blank" style="display:inline-block;text-align:center;">
+                    Join Telegram →
+                </a>
+                <a class="btno" href="https://x.com/kasiamessaging" target="_blank" style="display:inline-block;text-align:center;">
+                    Kasia →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        How to Get One
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="mint">
+    <div class="mg1">
+    </div>
+    <div class="mg2">
+    </div>
+    <span class="mint-ey">
+    No Whitelist. No Presale. No Friends &amp; Family.
+   </span>
+    <h2 class="mint-t">
+    <span class="m1">
+     Same Rules
+    </span>
+        <span class="m2">
+     For Everyone
+    </span>
+    </h2>
+    <p class="mint-sub">
+        287 KAS. That's it. Everyone pays the same. Everyone competes the same. Your wallet gets read, your creature gets assigned, and it's written into the DAG before you finish reading this sentence.
+    </p>
+    <div class="mint-cards">
+        <div class="mc">
+            <div class="mcv">
+                782
+            </div>
+            <div class="mcl">
+                Total Supply
+            </div>
+        </div>
+        <div class="mc">
+            <div class="mcv">
+                287
+                <span style="font-size:1.1rem">
+       KAS
+      </span>
+            </div>
+            <div class="mcl">
+                Mint Price
+            </div>
+        </div>
+        <div class="mc">
+            <div class="mcv">
+                TBA
+            </div>
+            <div class="mcl">
+                Drop Date
+            </div>
+        </div>
+    </div>
+    <div class="mint-how">
+        <div class="mh-t">
+            Dead simple.
+        </div>
+        <div class="mh-steps">
+            <div class="ms">
+                <div class="msn">
+                    01
+                </div>
+                <div class="mst">
+                    Stack $KAS
+                </div>
+                <div class="msd">
+                    We snapshot your wallet. The fatter the bag, the higher the creature. No tricks — just math.
+                    <br/>
+                    <span style="color:rgba(73,234,203,.5);font-size:.75em;margin-top:4px;display:block">
+        (JOKE NFA DYOR)
+       </span>
+                </div>
+            </div>
+            <div class="ms">
+                <div class="msn">
+                    02
+                </div>
+                <div class="mst">
+                    287 KAS. Go.
+                </div>
+                <div class="msd">
+                    One price. One click. Your rank gets assigned on mint — you see what you are the second it lands.
+                </div>
+            </div>
+            <div class="ms">
+                <div class="msn">
+                    03
+                </div>
+                <div class="mst">
+                    Written Into the DAG
+                </div>
+                <div class="msd">
+                    KRC-721 on Kaspa L1. Immutable. Provable. The thing next to your name that tells people everything.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mint-ctas">
+        <a class="btnp" href="https://x.com/Kas_Ranks" target="_blank">
+            Follow on 𝕏
+        </a>
+        <a class="btno" href="https://t.me/Kas_Ranks" target="_blank">
+            Join Telegram
+        </a>
+    </div>
+    <p class="mint-note">
+        Mint date TBA — if you're seeing this, you're early
+    </p>
+</section>
+<footer>
+    <div class="fl">
+    <span class="fm2">
+     <svg class="kas-k-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="15.3 18.9 15.3 18.9 12.7 18.5 13.4 13.4 8 17.6 6.4 15.6 11.2 11.9 6.4 8.2 8 6.2 13.4 10.4 12.7 5.3 15.3 4.9 16.3 11.9 15.3 18.9">
+      </polygon>
+     </svg>
+    </span>
+        <div class="fw">
+            KAS
+            <b>
+                RANK
+            </b>
+        </div>
+    </div>
+    <div class="flinks">
+        <a href="https://x.com/Kas_Ranks " target="_blank">
+            𝕏 / Twitter
+        </a>
+        <a href="https://t.me/Kas_Ranks" target="_blank">
+            Telegram
+        </a>
+        <a href="https://kaspa.org/" target="_blank">
+            Kaspa.org
+        </a>
+    </div>
+    <div class="fk">
+        782 · Kaspa · GHOSTDAG · KRC-721 · PoW
+    </div>
+</footer>
+<script src="src/js/cursor.js">
+</script>
+<script src="src/js/canvas-bg.js">
+</script>
+<script src="src/js/canvas-dag.js">
+</script>
+<script src="src/js/ui.js">
+</script>
+</body>
+</html>

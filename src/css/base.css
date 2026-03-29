@@ -1,0 +1,220 @@
+.fm2 .kas-k-svg {
+  width:1.5rem;
+  height:1.5rem;
+  fill:var(--kas);
+  filter:drop-shadow(0 0 8px rgba(73,234,203,.6))
+}
+.kspv .kas-k-svg {
+  width:2.6rem;
+  height:2.6rem;
+  fill:var(--kas)
+}
+.amb {
+  position:absolute;
+  pointer-events:none;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:0;
+  transition:opacity 1.2s ease;
+  z-index:0
+}
+.amb.vis {
+  opacity:1
+}
+#about .amb {
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,rgba(73,234,203,.07),transparent 70%);
+  top:10%;
+  right:-100px
+}
+#ranks .amb {
+  width:700px;
+  height:400px;
+  background:radial-gradient(circle,rgba(240,192,64,.05),transparent 70%);
+  bottom:0;
+  left:-150px
+}
+#rarity .amb {
+  width:600px;
+  height:400px;
+  background:radial-gradient(circle,rgba(73,234,203,.06),transparent 70%);
+  top:20%;
+  right:-120px
+}
+#mint .amb {
+  width:900px;
+  height:600px;
+  background:radial-gradient(circle,rgba(73,234,203,.1),transparent 65%);
+  top:0;
+  left:50%;
+  transform:translateX(-50%)
+}
+body::after {
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:9000;
+  pointer-events:none;
+  opacity:.022;
+
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+}
+#cur {
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:var(--kas);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  mix-blend-mode:screen;
+  transform:translate(-50%,-50%);
+  transition:transform .08s
+}
+#cur-r {
+  position:fixed;
+  width:32px;
+  height:32px;
+  border:1.5px solid rgba(73,234,203,.35);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,border-color .2s
+}
+#bgc {
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none
+}
+.lbl {
+  font-family:var(--fm);
+  font-size:.72rem;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:var(--kas);
+  display:block;
+  margin-bottom:14px
+}
+.sec-b {
+   font-family:var(--fh);
+   font-size:clamp(1.4rem,2.75vw,2.5rem);
+   font-weight:800;
+   line-height:.95;
+   letter-spacing:-2px;
+   margin-bottom:50px;
+ }
+.sec-t {
+  font-family:var(--fh);
+  font-size:clamp(2.8rem,5.5vw,5rem);
+  font-weight:800;
+  line-height:.95;
+  letter-spacing:-2px;
+  margin-bottom:18px
+}
+.sec-t em {
+  font-style:normal;
+  font-weight:400;
+  color:var(--ghost)
+}
+.dv {
+  display:flex;
+  align-items:center;
+  gap:22px;
+  padding:0 56px;
+  max-width:1400px;
+  margin:0 auto
+}
+.dvb {
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(73,234,203,.12),transparent)
+}
+.dvt {
+  font-family:var(--fm);
+  font-size:.76rem;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:rgba(73,234,203,.28);
+  white-space:nowrap
+}
+@keyframes rise {
+  from {
+    opacity:0;
+    transform:translateY(22px)
+  }
+
+  to {
+    opacity:1;
+    transform:translateY(0)
+  }
+
+}
+@keyframes blink {
+  0%,100% {
+    opacity:.4
+  }
+
+  50% {
+    opacity:1
+  }
+
+}
+@keyframes pulse-ring {
+  0%,100% {
+    transform:translate(-50%,-50%) scale(1);
+    opacity:.5
+  }
+
+  50% {
+    transform:translate(-50%,-50%) scale(1.15);
+    opacity:1
+  }
+
+}
+@keyframes gradient-shift {
+  0% {
+    background-position:0% 50%
+  }
+
+  50% {
+    background-position:100% 50%
+  }
+
+  100% {
+    background-position:0% 50%
+  }
+
+}
+@keyframes float {
+  0%,100% {
+    transform:translateY(0)
+  }
+
+  50% {
+    transform:translateY(-8px)
+  }
+
+}
+@keyframes marquee-scroll {
+  0% {
+    transform:translateX(0)
+  }
+
+  100% {
+    transform:translateX(-50%)
+  }
+
+}
+@keyframes border-run {
+  0% {
+    background-position:0% 0%
+  }
+
+  100% {
+    background-position:200% 0%
+  }
+
+}

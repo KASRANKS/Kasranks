@@ -1,0 +1,78 @@
+nav {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:500;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 56px;
+  transition:all .4s
+}
+nav.sol {
+  background:rgba(2,11,17,.98);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(73,234,203,.06);
+  padding:16px 56px
+}
+.nlogo {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none
+}
+.nmark {
+  font-size:1.8rem;
+  color:var(--kas);
+  filter:drop-shadow(0 0 14px rgba(73,234,203,.9));
+  line-height:1
+}
+.nword {
+  font-family:var(--fh);
+  font-size:1.15rem;
+  font-weight:800;
+  letter-spacing:7px;
+  text-transform:uppercase;
+  color:var(--pearl)
+}
+.nword b {
+  color:var(--kas)
+}
+.nlinks {
+  display:flex;
+  gap:32px;
+  list-style:none
+}
+.nlinks a {
+  font-family:var(--fm);
+  font-size:.72rem;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:rgba(230,245,239,.45);
+  transition:color .25s,text-shadow .25s
+}
+.nlinks a:hover {
+  color:var(--kas);
+  text-shadow:0 0 18px rgba(73,234,203,.4)
+}
+.ncta {
+  font-family:var(--fm);
+  font-size:.76rem;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  padding:10px 26px;
+  border:1px solid rgba(73,234,203,.5);
+  color:var(--kas);
+  background:rgba(73,234,203,.05);
+  text-decoration:none;
+  clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px));
+  transition:all .25s;
+  white-space:nowrap
+}
+.ncta:hover {
+  background:rgba(73,234,203,.15);
+  box-shadow:0 0 40px rgba(73,234,203,.35)
+}
