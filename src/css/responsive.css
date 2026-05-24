@@ -822,10 +822,6 @@
   }
 }
 
-.canvas-mobile-fallback {
-  display:none
-}
-
 @media(max-width:768px) {
   .hero-r {
     overflow:hidden

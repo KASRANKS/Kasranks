@@ -1,7 +1,9 @@
+const ORCA_ICON = 'src/assets/orca-emoji.png';
+
 const rouletteRanks = [
   { emoji: '🧜', name: 'Aquaman', tier: 'Tier I — Legendary', color: '#f0c040' },
   { emoji: '🐋', name: 'Humpback', tier: 'Tier II — Epic', color: '#c084fc' },
-  { emoji: '🐳', name: 'Blue Whale', tier: 'Tier III — Epic', color: '#7dd3fc' },
+  { emoji: '', icon: ORCA_ICON, name: 'Killer Whale', tier: 'Tier III — Epic', color: '#7dd3fc' },
   { emoji: '🦈', name: 'Shark', tier: 'Tier IV — Rare', color: '#60a5fa' },
   { emoji: '🐬', name: 'Dolphin', tier: 'Tier V — Rare', color: '#34d399' },
   { emoji: '🐟', name: 'Fish', tier: 'Tier VI — Uncommon', color: '#4ade80' },
@@ -13,6 +15,14 @@ const rouletteRanks = [
 ];
 
 let isRouletteBusy = false;
+
+function rankSymbolMarkup(rank) {
+  if (rank.icon) {
+    return `<img class="rank-icon rank-icon-orca" src="${rank.icon}" alt="${rank.name}">`;
+  }
+
+  return `<span>${rank.emoji}</span>`;
+}
 
 window.addEventListener('scroll', () => {
   const navbar = document.getElementById('nav');
@@ -128,11 +138,7 @@ function spinRoulette(event) {
   let timeoutDelay = 40;
 
   function drawRank(rank) {
-    if (turns === 0) {
-      display.innerHTML = `<span>${rank.emoji}</span>`;
-    } else {
-      display.firstChild.textContent = rank.emoji;
-    }
+    display.innerHTML = rankSymbolMarkup(rank);
 
     display.style.filter = `drop-shadow(0 0 28px ${rank.color})`;
     name.textContent = rank.name;
@@ -174,7 +180,7 @@ function spinRoulette(event) {
 
     const finalRank = getWeightedRank();
 
-    display.firstChild.textContent = finalRank.emoji;
+    display.innerHTML = rankSymbolMarkup(finalRank);
     display.style.filter = `drop-shadow(0 0 48px ${finalRank.color})`;
     name.textContent = finalRank.name;
     name.style.color = finalRank.color;

@@ -125,12 +125,6 @@
     requestAnimationFrame(render);
   }
 
-  function boot() {
-    resizeCanvas();
-    createParticles();
-    render();
-  }
-
   resizeCanvas();
   createParticles();
   window.addEventListener('resize', () => {
@@ -172,5 +166,3 @@ function _initWhenReady(id, callback) {
     }
   }, 50);
 }
-
-(function emptyBackgroundHook() {})();

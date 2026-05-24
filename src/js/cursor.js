@@ -1,20 +1,3 @@
-function hiDPI(canvas, context, width, height) {
-  const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-
-  canvas.width = width * pixelRatio;
-  canvas.height = height * pixelRatio;
-  canvas.style.width = `${width}px`;
-  canvas.style.height = `${height}px`;
-
-  context.scale(pixelRatio, pixelRatio);
-
-  return {
-    width,
-    height,
-    dpr: pixelRatio
-  };
-}
-
 (function setupCursor() {
   const cursorDot = document.getElementById('cur');
   const cursorRing = document.getElementById('cur-r');

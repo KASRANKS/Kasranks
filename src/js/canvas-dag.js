@@ -695,6 +695,7 @@ _initWhenReady('orbit-canvas', function() {
  const tip=document.getElementById('orbit-tooltip');
  if(!canvas)return;
  const ctx=canvas.getContext('2d');
+ const ORCA_ICON='src/assets/orca-emoji.png';
 
  const RANKS=[
  {
@@ -704,7 +705,7 @@ _initWhenReady('orbit-canvas', function() {
  emoji:'🐋', name:'Humpback', tier:'Tier II — Leviathan', color:'#c084fc', ring:1, speed:.14, size:25, angle:0.6
  },
  {
- emoji:'🐳', name:'Blue Whale', tier:'Tier III — Apex', color:'#7dd3fc', ring:1, speed:.14, size:25, angle:2.7
+ emoji:'', icon:ORCA_ICON, name:'Killer Whale', tier:'Tier III — Apex', color:'#7dd3fc', ring:1, speed:.14, size:25, angle:2.7
  },
  {
  emoji:'🦈', name:'Shark', tier:'Tier IV — Predator', color:'#60a5fa', ring:1, speed:.14, size:23, angle:4.8
@@ -737,6 +738,7 @@ _initWhenReady('orbit-canvas', function() {
  let hoveredRank=null;
  let dpr=1;
  let emojiCache={};
+ let imageCache={};
 
  function resize() {
  emojiCache={};
@@ -849,6 +851,14 @@ _initWhenReady('orbit-canvas', function() {
  ctx.lineWidth=.8; ctx.stroke();
  });
  // Pre-render emoji sprites at high resolution for crisp mobile quality
+ function getRankImage(src) {
+   if(imageCache[src]) return imageCache[src];
+   const img=new Image();
+   img.src=src;
+   imageCache[src]=img;
+   return img;
+ }
+
  function getEmojiSprite(emoji, size) {
    const key=emoji+'_'+Math.round(size);
    if(emojiCache[key]) return emojiCache[key];
@@ -882,9 +892,19 @@ _initWhenReady('orbit-canvas', function() {
  ctx.strokeStyle=`rgba(${r},${g},${b},${isHovered?.95:.55})`;
  ctx.lineWidth=isHovered?2:1.4;
  ctx.stroke();
- const drawSize=Math.max(s*1.15,14)*1.3;
+ const drawSize=Math.max(s*1.15,14)*1.3*(rank.icon?1.12:1);
+ if(rank.icon) {
+ const img=getRankImage(rank.icon);
+ if(img.complete && img.naturalWidth) {
+ ctx.drawImage(img, x-drawSize/2, y-drawSize/2, drawSize, drawSize);
+ } else {
  const sprite=getEmojiSprite(rank.emoji, s*1.15);
  ctx.drawImage(sprite, x-drawSize/2, y-drawSize/2, drawSize, drawSize);
+ }
+ } else {
+ const sprite=getEmojiSprite(rank.emoji, s*1.15);
+ ctx.drawImage(sprite, x-drawSize/2, y-drawSize/2, drawSize, drawSize);
+ }
  });
  const pulse=.5+.5*Math.sin(t*2.3);
  const coreR=32*scale;
@@ -964,7 +984,8 @@ _initWhenReady('orbit-canvas', function() {
  tip.style.left=(tipX+18)+'px';
  }
  tip.style.top=tipY+'px';
- tip.innerHTML=`<div class="ot-name">${found.rank.emoji} ${found.rank.name}</div><div class="ot-tier" style="color:${found.rank.color}">${found.rank.tier}</div>`;
+ const symbol=found.rank.icon?`<img class="rank-icon rank-icon-orca" src="${found.rank.icon}" alt="">`:found.rank.emoji;
+ tip.innerHTML=`<div class="ot-name">${symbol}<span>${found.rank.name}</span></div><div class="ot-tier" style="color:${found.rank.color}">${found.rank.tier}</div>`;
  tip.style.opacity='1';
  }
  else {
