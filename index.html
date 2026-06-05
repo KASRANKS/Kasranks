@@ -96,6 +96,11 @@
             </a>
         </li>
         <li>
+            <a href="#rank-system">
+                Ranking System
+            </a>
+        </li>
+        <li>
             <a href="#rarity">
                 Rarity
             </a>
@@ -855,7 +860,97 @@
     <div class="dvb">
     </div>
     <div class="dvt">
-        287 ↔ 782
+        Ranking System
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="rank-system">
+    <div class="rank-system-head">
+        <span class="lbl">
+            The Ocean Order
+        </span>
+        <h2 class="sec-t">
+            Token ID
+            <br/>
+            <em>
+                To Rank.
+            </em>
+        </h2>
+        <p>
+            Enter your token ID. The ocean already ranked it.
+        </p>
+    </div>
+    <div class="rank-system-grid">
+        <div class="rank-lookup">
+            <div class="rank-lookup-label">
+                Check Token
+            </div>
+            <div class="rank-search">
+                <input id="rank-token-input" inputmode="numeric" min="1" max="782" placeholder="Token ID" type="number"/>
+                <button id="rank-token-btn" type="button">
+                    Check Rank
+                </button>
+            </div>
+            <div class="rank-result" id="rank-result">
+                <div class="rank-result-art" id="rank-result-art">
+                </div>
+                <div class="rank-result-copy">
+                    <div class="rank-result-k">
+                        KASRANKS
+                    </div>
+                    <div class="rank-result-main">
+                        Enter a token ID.
+                    </div>
+                    <div class="rank-result-sub">
+                        Legendary IDs stay legendary. Ranked tokens start at #1.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rank-system-panel">
+            <div class="rank-system-stat">
+                <strong>
+                    771
+                </strong>
+                <span>
+                    Ranked NFTs
+                </span>
+            </div>
+            <div class="rank-system-stat legendary">
+                <strong>
+                    11
+                </strong>
+                <span>
+                    Legendary 1/1 pieces
+                </span>
+            </div>
+            <div class="rank-system-stat">
+                <strong>
+                    782
+                </strong>
+                <span>
+                    Full gallery
+                </span>
+            </div>
+            <div class="legendary-strip" id="legendary-strip">
+                Loading legendary IDs...
+            </div>
+            <a class="rank-open" href="ranking.html">
+                Open Full Ranking
+            </a>
+        </div>
+    </div>
+</section>
+<div style="height:40px">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        287 &#8596; 782
     </div>
     <div class="dvb">
     </div>
@@ -1938,6 +2033,10 @@
 <script src="src/js/canvas-bg.js">
 </script>
 <script src="src/js/canvas-dag.js">
+</script>
+<script src="src/data/kasranks-ranking.js">
+</script>
+<script src="src/data/kasranks-meta.js">
 </script>
 <script src="src/js/ui.js">
 </script>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+    <title>
+        KASRANKS Ranking
+    </title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="src/css/tokens.css" rel="stylesheet"/>
+    <link href="src/css/base.css" rel="stylesheet"/>
+    <link href="src/css/nav.css" rel="stylesheet"/>
+    <link href="src/css/hero.css" rel="stylesheet"/>
+    <link href="src/css/sections.css" rel="stylesheet"/>
+    <link href="src/css/responsive.css" rel="stylesheet"/>
+    <style>
+        .nacts{
+          display:flex;
+          align-items:center;
+          gap:8px;
+          list-style:none;
+          padding:0;
+          margin:0;
+        }
+        #nav .ncta{
+          font-size:.68rem;
+          letter-spacing:2.2px;
+          padding:9px 16px;
+        }
+        .ranking-page-top{
+          height:124px;
+        }
+        .ranking-page-actions{
+          display:flex;
+          gap:12px;
+          flex-wrap:wrap;
+          margin-top:22px;
+        }
+        @media(min-width:1025px){
+          #nav .nlinks{
+            position:absolute;
+            left:50%;
+            transform:translateX(-50%);
+            margin:0;
+            padding:0;
+          }
+        }
+        @media(max-width:640px){
+          #nav .nacts{display:none}
+          .ranking-page-top{height:96px}
+        }
+    </style>
+</head>
+<body>
+<div id="cur">
+</div>
+<div id="cur-r">
+</div>
+<canvas id="bgc">
+</canvas>
+<nav id="nav" class="sol">
+    <a class="nlogo" href="index.html">
+    <span class="nmark">
+     <svg class="kas-k-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="15.3 18.9 15.3 18.9 12.7 18.5 13.4 13.4 8 17.6 6.4 15.6 11.2 11.9 6.4 8.2 8 6.2 13.4 10.4 12.7 5.3 15.3 4.9 16.3 11.9 15.3 18.9">
+      </polygon>
+     </svg>
+    </span>
+        <div class="nword">
+            KAS
+            <b>
+                RANK
+            </b>
+        </div>
+    </a>
+    <ul class="nlinks">
+        <li>
+            <a href="index.html#about">
+                About
+            </a>
+        </li>
+        <li>
+            <a href="index.html#ranks">
+                Ranks
+            </a>
+        </li>
+        <li>
+            <a href="index.html#rank-system">
+                Ranking System
+            </a>
+        </li>
+        <li>
+            <a href="index.html#rarity">
+                Rarity
+            </a>
+        </li>
+        <li>
+            <a href="index.html#chain">
+                Kaspa
+            </a>
+        </li>
+        <li>
+            <a href="index.html#community">
+                Community
+            </a>
+        </li>
+    </ul>
+    <div class="nacts">
+        <a class="ncta" href="index.html#rank-system">
+            Back To Website
+        </a>
+    </div>
+</nav>
+<div class="ranking-page-top">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        Full Ranking
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<div style="height:20px">
+</div>
+<section id="rank-system">
+    <div class="rank-system-head rank-system-head-full">
+        <div class="rank-system-intro">
+            <span class="lbl">
+                KASRANKS
+            </span>
+            <h2 class="sec-t">
+                All 782
+                <br/>
+                <em>
+                    In Order.
+                </em>
+            </h2>
+            <p>
+                Legends define the hierarchy. The depths decide the rest.
+            </p>
+            <div class="ranking-page-actions">
+                <a class="rank-open" href="index.html#rank-system">
+                    Back To Website
+                </a>
+            </div>
+        </div>
+        <div class="rank-share-note">
+            <span>
+                Revenue Share
+            </span>
+            <strong>
+                Fees follow rank.
+            </strong>
+            <p>
+                The % beside each NFT is its holder-pool weight. Higher in the hierarchy, heavier in the flow.
+            </p>
+        </div>
+    </div>
+    <div class="rank-system-grid">
+        <div class="rank-lookup">
+            <div class="rank-lookup-label">
+                Check Token
+            </div>
+            <div class="rank-search">
+                <input id="rank-token-input" inputmode="numeric" min="1" max="782" placeholder="Token ID" type="number"/>
+                <button id="rank-token-btn" type="button">
+                    Check Rank
+                </button>
+            </div>
+            <div class="rank-result" id="rank-result">
+                <div class="rank-result-art" id="rank-result-art">
+                </div>
+                <div class="rank-result-copy">
+                    <div class="rank-result-k">
+                        KASRANKS
+                    </div>
+                    <div class="rank-result-main">
+                        Enter a token ID.
+                    </div>
+                    <div class="rank-result-sub">
+                        Enter a token ID to reveal its place.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rank-system-panel">
+            <div class="rank-system-stat">
+                <strong>
+                    771
+                </strong>
+                <span>
+                    Ranked NFTs
+                </span>
+            </div>
+            <div class="rank-system-stat legendary">
+                <strong>
+                    11
+                </strong>
+                <span>
+                    Legendary 1/1 pieces
+                </span>
+            </div>
+            <div class="rank-system-stat">
+                <strong>
+                    782
+                </strong>
+                <span>
+                    Total NFTs
+                </span>
+            </div>
+            <div class="legendary-strip" id="legendary-strip">
+                Loading legendary IDs...
+            </div>
+        </div>
+    </div>
+</section>
+<div style="height:40px">
+</div>
+<section class="full-ranking-page">
+    <div class="rank-gallery-head">
+        <span>
+            782 total NFTs
+        </span>
+        <strong>
+            Visual order
+        </strong>
+    </div>
+    <div class="rank-gallery full" id="rank-gallery" data-limit="782">
+    </div>
+</section>
+<div style="height:40px">
+</div>
+<div class="dv">
+    <div class="dvb">
+    </div>
+    <div class="dvt">
+        287 &#8596; 782
+    </div>
+    <div class="dvb">
+    </div>
+</div>
+<footer>
+    <div class="fl">
+    <span class="fm2">
+     <svg class="kas-k-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="15.3 18.9 15.3 18.9 12.7 18.5 13.4 13.4 8 17.6 6.4 15.6 11.2 11.9 6.4 8.2 8 6.2 13.4 10.4 12.7 5.3 15.3 4.9 16.3 11.9 15.3 18.9">
+      </polygon>
+     </svg>
+    </span>
+        <div class="fw">
+            KAS
+            <b>
+                RANK
+            </b>
+        </div>
+    </div>
+    <div class="flinks">
+        <a href="index.html#rank-system">
+            Back To Website
+        </a>
+        <a href="https://x.com/Kas_Ranks" target="_blank" rel="noopener">
+            X / Twitter
+        </a>
+        <a href="https://t.me/Kas_Ranks" target="_blank" rel="noopener">
+            Telegram
+        </a>
+    </div>
+    <div class="fk">
+        11 legendary + 771 ranked NFTs
+    </div>
+</footer>
+<script src="src/js/cursor.js">
+</script>
+<script src="src/js/canvas-bg.js">
+</script>
+<script src="src/js/canvas-dag.js">
+</script>
+<script src="src/data/kasranks-ranking.js">
+</script>
+<script src="src/data/kasranks-meta.js">
+</script>
+<script src="src/js/ui.js">
+</script>
+</body>
+</html>

@@ -41,13 +41,13 @@ nav.sol {
 }
 .nlinks {
   display:flex;
-  gap:32px;
+  gap:24px;
   list-style:none
 }
 .nlinks a {
   font-family:var(--fm);
-  font-size:.72rem;
-  letter-spacing:2.5px;
+  font-size:.68rem;
+  letter-spacing:2.1px;
   text-transform:uppercase;
   text-decoration:none;
   color:rgba(230,245,239,.45);
