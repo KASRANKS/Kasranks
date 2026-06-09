@@ -562,6 +562,61 @@
     padding:14px 20px
   }
 
+  .wallet-search {
+    grid-template-columns:1fr
+  }
+
+  .wallet-lookup-jump {
+    padding:24px 18px
+  }
+
+  .wallet-lookup-full {
+    padding:26px 18px 28px
+  }
+
+  .wallet-lookup-head {
+    grid-template-columns:1fr;
+    gap:20px
+  }
+
+  .wallet-lookup-head h3 {
+    font-size:2rem
+  }
+
+  .wallet-lookup-head p {
+    font-size:.9rem
+  }
+
+  .wallet-search button {
+    padding:14px 20px
+  }
+
+  .wallet-result {
+    font-size:.56rem;
+    letter-spacing:1.7px
+  }
+
+  .wallet-lookup-full .wallet-result {
+    grid-template-columns:1fr
+  }
+
+  .wallet-stat {
+    min-height:88px;
+    padding:17px 16px
+  }
+
+  .wallet-stat strong {
+    font-size:1.65rem
+  }
+
+  .wallet-gallery {
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .wallet-lookup-full .wallet-gallery {
+    grid-template-columns:repeat(2,1fr)
+  }
+
   .rank-result {
     grid-template-columns:82px minmax(0,1fr);
     gap:14px;

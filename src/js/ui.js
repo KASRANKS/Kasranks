@@ -121,17 +121,36 @@ window.addEventListener('scroll', () => {
   const resultArt = document.getElementById('rank-result-art');
   const gallery = document.getElementById('rank-gallery');
   const legendaryStrip = document.getElementById('legendary-strip');
+  const walletInput = document.getElementById('wallet-address-input');
+  const walletButton = document.getElementById('wallet-address-btn');
+  const walletResult = document.getElementById('wallet-result');
+  const walletGallery = document.getElementById('wallet-gallery');
 
   if (!input || !button || !result) {
     return;
   }
 
   const rankingPath = 'src/data/kasranks-ranking.json';
+  const walletApiBase = 'https://krc721-indexer.kaspa.com/api/v1/krc721/mainnet/address';
   const thumbPath = (tokenId) => `src/assets/ranking-thumbs/${tokenId}.jpg`;
   const legendaryIds = [1, 9, 25, 56, 103, 166, 244, 330, 432, 541, 658];
   const legendaryIdSet = new Set(legendaryIds);
   const previewLimit = gallery ? Number(gallery.dataset.limit || 200) : 0;
-  const tokenMeta = window.KASRANKS_META || {};
+  let tokenMeta = window.KASRANKS_META || {};
+  let metaLoadPromise = null;
+  const legendaryMeta = {
+    1: { name: 'Aquaman #1', creature: 'Aquaman' },
+    9: { name: 'Humpback #9', creature: 'Humpback' },
+    25: { name: 'Killer Whale #25', creature: 'Killer Whale' },
+    56: { name: 'Shark #56', creature: 'Shark' },
+    103: { name: 'Dolphin #103', creature: 'Dolphin' },
+    166: { name: 'Fish #166', creature: 'Fish' },
+    244: { name: 'Octopus #244', creature: 'Octopus' },
+    330: { name: 'Crab #330', creature: 'Crab' },
+    432: { name: 'Shrimp #432', creature: 'Shrimp' },
+    541: { name: 'Oyster #541', creature: 'Oyster' },
+    658: { name: 'Plankton #658', creature: 'Plankton' }
+  };
   const shareCurve = {
     rankedSupply: 771,
     floorHash: 5.85,
@@ -149,7 +168,33 @@ window.addEventListener('scroll', () => {
   let ranking = [];
 
   function getMeta(tokenId) {
-    return tokenMeta[String(tokenId)] || {};
+    return tokenMeta[String(tokenId)] || legendaryMeta[tokenId] || {};
+  }
+
+  function loadMetaIfNeeded() {
+    if (window.KASRANKS_META) {
+      tokenMeta = window.KASRANKS_META;
+      return Promise.resolve();
+    }
+
+    if (metaLoadPromise) {
+      return metaLoadPromise;
+    }
+
+    metaLoadPromise = new Promise((resolve) => {
+      const script = document.createElement('script');
+
+      script.src = 'src/data/kasranks-meta.js';
+      script.onload = () => {
+        tokenMeta = window.KASRANKS_META || tokenMeta;
+        resolve();
+      };
+      script.onerror = () => resolve();
+
+      document.head.appendChild(script);
+    });
+
+    return metaLoadPromise;
   }
 
   function getRankLine(rank) {
@@ -177,6 +222,21 @@ window.addEventListener('scroll', () => {
     return `${getSharePercent(rank, isLegendary).toFixed(4)}% share`;
   }
 
+  function getEntryForToken(tokenId) {
+    const rank = rankByToken.get(tokenId);
+    const isLegendary = legendaryIdSet.has(tokenId);
+
+    if (!rank && !isLegendary) {
+      return null;
+    }
+
+    return {
+      tokenId,
+      newRank: rank || null,
+      isLegendary
+    };
+  }
+
   function getTraitSummary(meta) {
     const traits = (meta.traits || []).filter((trait) => trait.type !== 'Creature');
 
@@ -193,7 +253,7 @@ window.addEventListener('scroll', () => {
     const name = meta.name || `Token #${tokenId}`;
 
     resultArt.innerHTML =
-      `<img src="${thumbPath(tokenId)}" alt="KASRANKS token ${tokenId}" loading="lazy">`;
+      `<img src="${thumbPath(tokenId)}" alt="KASRANKS token ${tokenId}" loading="lazy" decoding="async">`;
 
     result.querySelector('.rank-result-main').classList.toggle('legendary', isLegendary);
     result.querySelector('.rank-result-k').textContent = name;
@@ -226,7 +286,7 @@ window.addEventListener('scroll', () => {
     result.querySelector('.rank-result-share')?.remove();
   }
 
-  function checkToken() {
+  async function checkToken() {
     const tokenId = Number(input.value);
 
     if (!Number.isInteger(tokenId) || tokenId < 1 || tokenId > 782) {
@@ -246,6 +306,7 @@ window.addEventListener('scroll', () => {
       return;
     }
 
+    await loadMetaIfNeeded();
     setResult(tokenId, rank);
   }
 
@@ -255,6 +316,50 @@ window.addEventListener('scroll', () => {
       .join(' &middot; ')}`;
 
     legendaryStrip.innerHTML = legendary;
+  }
+
+  function renderRankCard(entry) {
+    const meta = getMeta(entry.tokenId);
+    const name = meta.name || `Token #${entry.tokenId}`;
+    const creature = meta.creature || 'KASRANKS';
+    const traits = (meta.traits || []).filter((trait) => trait.type !== 'Creature');
+    const traitLine = traits.length
+      ? traits.slice(0, 2).map((trait) => trait.value).join(' / ')
+      : `${creature} base.`;
+
+    return `
+      <button class="rank-card${entry.isLegendary ? ' legendary' : ''}" type="button" data-token="${entry.tokenId}">
+        <img src="${thumbPath(entry.tokenId)}" alt="KASRANKS token ${entry.tokenId}" loading="lazy" decoding="async">
+        <span class="rank-card-copy">
+          <span class="rank-card-rank">${getRankLine(entry.newRank)}</span>
+          <span class="rank-card-name">${name}</span>
+          <span class="rank-card-creature">${creature}</span>
+          <span class="rank-card-share">${getShareLine(entry.newRank, entry.isLegendary)}</span>
+          <span class="rank-card-desc">${traitLine}</span>
+        </span>
+      </button>
+    `;
+  }
+
+  function bindRankCards(wrapper) {
+    if (wrapper.dataset.boundCards) {
+      return;
+    }
+
+    wrapper.dataset.boundCards = 'true';
+    wrapper.addEventListener('click', (event) => {
+      const card = event.target.closest('.rank-card');
+
+      if (!card || !wrapper.contains(card)) {
+        return;
+      }
+
+      const tokenId = Number(card.dataset.token);
+
+      input.value = tokenId;
+      checkToken();
+      openRankPreview(tokenId);
+    });
   }
 
   function renderGallery() {
@@ -267,40 +372,161 @@ window.addEventListener('scroll', () => {
       ...ranking.map((entry) => ({ ...entry, isLegendary: false }))
     ].slice(0, previewLimit);
 
-    gallery.innerHTML = galleryEntries
-      .map((entry) => {
-        const meta = getMeta(entry.tokenId);
-        const name = meta.name || `Token #${entry.tokenId}`;
-        const creature = meta.creature || 'KASRANKS';
-        const traits = (meta.traits || []).filter((trait) => trait.type !== 'Creature');
-        const traitLine = traits.length
-          ? traits.slice(0, 2).map((trait) => trait.value).join(' / ')
-          : `${creature} base.`;
+    gallery.innerHTML = '';
+    bindRankCards(gallery);
+    gallery.innerHTML = galleryEntries.map(renderRankCard).join('');
+  }
 
-        return `
-          <button class="rank-card${entry.isLegendary ? ' legendary' : ''}" type="button" data-token="${entry.tokenId}">
-            <img src="${thumbPath(entry.tokenId)}" alt="KASRANKS token ${entry.tokenId}" loading="lazy">
-            <span class="rank-card-copy">
-              <span class="rank-card-rank">${getRankLine(entry.newRank)}</span>
-              <span class="rank-card-name">${name}</span>
-              <span class="rank-card-creature">${creature}</span>
-              <span class="rank-card-share">${getShareLine(entry.newRank, entry.isLegendary)}</span>
-              <span class="rank-card-desc">${traitLine}</span>
-            </span>
-          </button>
-        `;
-      })
-      .join('');
+  function extractTokenId(item) {
+    const raw = item?.tokenId ?? item?.tokenid ?? item?.token_id ?? item?.token?.tokenId ?? item?.token?.tokenid;
+    const match = String(raw ?? '').match(/^\d+$/);
+    const tokenId = match ? Number(match[0]) : null;
 
-    gallery.querySelectorAll('.rank-card').forEach((card) => {
-      card.addEventListener('click', () => {
-        const tokenId = Number(card.dataset.token);
+    return tokenId >= 1 && tokenId <= 782 ? tokenId : null;
+  }
 
-        input.value = tokenId;
-        checkToken();
-        openRankPreview(tokenId);
+  function getWalletItems(payload) {
+    const result = payload?.result ?? payload;
+
+    if (Array.isArray(result)) {
+      return result;
+    }
+
+    if (Array.isArray(result?.tokens)) {
+      return result.tokens;
+    }
+
+    if (Array.isArray(result?.nfts)) {
+      return result.nfts;
+    }
+
+    if (Array.isArray(result?.items)) {
+      return result.items;
+    }
+
+    return [];
+  }
+
+  async function fetchWalletTokens(address) {
+    let offset = '';
+    const tokens = [];
+
+    do {
+      const url = `${walletApiBase}/${encodeURIComponent(address)}/KASRANKS${offset ? `?offset=${encodeURIComponent(offset)}` : ''}`;
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error('Wallet lookup failed.');
+      }
+
+      const payload = await response.json();
+
+      getWalletItems(payload).forEach((item) => {
+        const tokenId = extractTokenId(item);
+
+        if (tokenId) {
+          tokens.push(tokenId);
+        }
       });
-    });
+
+      offset = payload.next || '';
+    } while (offset);
+
+    return [...new Set(tokens)];
+  }
+
+  function redirectWalletLookup(address) {
+    window.location.href = `ranking.html?wallet=${encodeURIComponent(address)}#wallet-lookup`;
+  }
+
+  function renderWallet(entries) {
+    const totalShare = entries.reduce(
+      (total, entry) => total + getSharePercent(entry.newRank, entry.isLegendary),
+      0
+    );
+    const bestRank = entries.find((entry) => !entry.isLegendary)?.newRank;
+    const legendaryCount = entries.filter((entry) => entry.isLegendary).length;
+    const bestLine = legendaryCount
+      ? `${legendaryCount} legendary held`
+      : bestRank
+        ? `Best rank #${bestRank}`
+        : 'No ranked NFTs';
+
+    walletResult.closest('.wallet-lookup')?.classList.add('has-results');
+    walletResult.innerHTML = `
+      <span class="wallet-stat">
+        <strong>${entries.length}</strong>
+        <em>Owned</em>
+      </span>
+      <span class="wallet-stat">
+        <strong>${totalShare.toFixed(4)}%</strong>
+        <em>Total share</em>
+      </span>
+      <span class="wallet-stat">
+        <strong>${bestLine}</strong>
+        <em>Depth found</em>
+      </span>
+    `;
+    walletGallery.innerHTML = entries.map(renderRankCard).join('');
+    bindRankCards(walletGallery);
+    input.value = entries[0].tokenId;
+    setResult(entries[0].tokenId, entries[0].newRank);
+    walletResult.closest('.wallet-lookup')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  async function checkWallet() {
+    if (!walletInput || !walletButton || !walletResult || !walletGallery) {
+      if (walletInput && walletButton) {
+        const address = walletInput.value.trim();
+
+        if (/^kaspa:[a-z0-9]{20,}$/i.test(address)) {
+          redirectWalletLookup(address);
+        } else if (walletResult) {
+          walletResult.textContent = 'Enter a full kaspa: address.';
+        }
+      }
+
+      return;
+    }
+
+    const address = walletInput.value.trim();
+
+    if (!/^kaspa:[a-z0-9]{20,}$/i.test(address)) {
+      walletResult.closest('.wallet-lookup')?.classList.remove('has-results');
+      walletResult.textContent = 'Enter a full kaspa: address.';
+      walletGallery.innerHTML = '';
+      return;
+    }
+
+    walletButton.disabled = true;
+    walletResult.closest('.wallet-lookup')?.classList.remove('has-results');
+    walletResult.textContent = 'Reading wallet...';
+    walletGallery.innerHTML = '';
+
+    try {
+      const tokenIds = await fetchWalletTokens(address);
+      const entries = tokenIds
+        .map(getEntryForToken)
+        .filter(Boolean)
+        .sort((a, b) => {
+          const rankA = a.isLegendary ? legendaryIds.indexOf(a.tokenId) - 11 : a.newRank;
+          const rankB = b.isLegendary ? legendaryIds.indexOf(b.tokenId) - 11 : b.newRank;
+
+          return rankA - rankB;
+        });
+
+      if (!entries.length) {
+        walletResult.closest('.wallet-lookup')?.classList.remove('has-results');
+        walletResult.textContent = 'No KASRANKS found in this wallet.';
+        return;
+      }
+
+      renderWallet(entries);
+    } catch (error) {
+      walletResult.textContent = 'Wallet lookup did not load. Try again in a moment.';
+    } finally {
+      walletButton.disabled = false;
+    }
   }
 
   function openRankPreview(tokenId) {
@@ -372,6 +598,13 @@ window.addEventListener('scroll', () => {
 
     input.value = legendaryIds[0];
     setResult(legendaryIds[0], null);
+
+    const walletFromUrl = new URLSearchParams(window.location.search).get('wallet');
+
+    if (walletFromUrl && walletInput && walletGallery) {
+      walletInput.value = walletFromUrl;
+      checkWallet();
+    }
   }
 
   if (window.KASRANKS_RANKING) {
@@ -387,6 +620,7 @@ window.addEventListener('scroll', () => {
   }
 
   button.addEventListener('click', checkToken);
+  walletButton?.addEventListener('click', checkWallet);
   result.addEventListener('click', () => {
     const tokenId = Number(result.dataset.token);
 
@@ -397,6 +631,11 @@ window.addEventListener('scroll', () => {
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       checkToken();
+    }
+  });
+  walletInput?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      checkWallet();
     }
   });
 })();

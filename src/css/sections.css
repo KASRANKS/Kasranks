@@ -544,7 +544,7 @@
   grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);
   gap:3px;
   align-items:stretch;
-  margin-bottom:34px
+  margin-bottom:3px
 }
 .rank-lookup,
 .rank-system-panel {
@@ -612,6 +612,189 @@
 .rank-search button:hover {
   background:rgba(73,234,203,.13);
   box-shadow:0 0 34px rgba(73,234,203,.18)
+}
+.wallet-lookup {
+  margin-top:28px;
+  padding-top:28px;
+  border-top:1px solid rgba(73,234,203,.08);
+  position:relative;
+  z-index:1
+}
+.wallet-lookup-jump {
+  margin-top:3px;
+  padding:28px 36px;
+  border:1px solid rgba(73,234,203,.08);
+  border-top:1px solid rgba(73,234,203,.08);
+  background:rgba(6,17,24,.82);
+  overflow:hidden
+}
+.wallet-lookup-jump::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at 18% 0%,rgba(73,234,203,.075),transparent 62%);
+  pointer-events:none
+}
+.wallet-lookup-jump .rank-lookup-label,
+.wallet-lookup-jump .wallet-search,
+.wallet-lookup-jump .wallet-result {
+  position:relative;
+  z-index:1
+}
+.wallet-lookup-jump .rank-lookup-label {
+  margin-bottom:16px
+}
+.wallet-lookup-jump .wallet-search {
+  grid-template-columns:minmax(0,1fr) auto
+}
+.wallet-lookup-jump .wallet-result {
+  margin-top:14px
+}
+.wallet-lookup-full {
+  margin-top:3px;
+  padding:36px 40px 40px;
+  border:1px solid rgba(73,234,203,.08);
+  background:rgba(6,17,24,.84);
+  overflow:hidden
+}
+.wallet-lookup-full::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at 12% 0%,rgba(73,234,203,.08),transparent 58%);
+  pointer-events:none
+}
+.wallet-lookup-head {
+  display:grid;
+  grid-template-columns:minmax(0,.72fr) minmax(360px,1fr);
+  gap:32px;
+  align-items:end;
+  position:relative;
+  z-index:1
+}
+.wallet-lookup-head h3 {
+  margin:0;
+  font-family:var(--fh);
+  font-size:clamp(2.2rem,4vw,4.3rem);
+  font-weight:800;
+  line-height:.95;
+  color:var(--pearl);
+  letter-spacing:-1.4px
+}
+.wallet-lookup-head p {
+  margin:12px 0 0;
+  max-width:420px;
+  font-family:var(--fb);
+  font-size:1rem;
+  line-height:1.75;
+  color:var(--muted)
+}
+.wallet-search {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px
+}
+.wallet-search input {
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
+  border:1px solid rgba(73,234,203,.18);
+  background:rgba(2,10,16,.74);
+  color:var(--pearl);
+  font-family:var(--fb);
+  font-size:.95rem;
+  font-weight:700;
+  padding:16px 18px;
+  outline:none
+}
+.wallet-search input:focus {
+  border-color:rgba(73,234,203,.5);
+  box-shadow:0 0 32px rgba(73,234,203,.12)
+}
+.wallet-search button {
+  font-family:var(--fm);
+  font-size:.68rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  padding:0 24px;
+  border:1px solid rgba(73,234,203,.42);
+  background:rgba(73,234,203,.05);
+  color:var(--kas);
+  cursor:pointer;
+  transition:all .25s
+}
+.wallet-search button:hover {
+  background:rgba(73,234,203,.13);
+  box-shadow:0 0 34px rgba(73,234,203,.18)
+}
+.wallet-search button:disabled {
+  cursor:wait;
+  opacity:.55
+}
+.wallet-result {
+  margin-top:18px;
+  font-family:var(--fm);
+  font-size:.64rem;
+  letter-spacing:2.3px;
+  line-height:1.6;
+  text-transform:uppercase;
+  color:rgba(230,245,239,.52)
+}
+.wallet-lookup-full .wallet-result {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+  position:relative;
+  z-index:1
+}
+.wallet-result strong {
+  color:var(--kas);
+  font-weight:700
+}
+.wallet-stat {
+  min-height:108px;
+  padding:20px 22px;
+  border:1px solid rgba(73,234,203,.08);
+  background:rgba(2,10,16,.5)
+}
+.wallet-stat strong {
+  display:block;
+  font-family:var(--fh);
+  font-size:clamp(1.5rem,3vw,2.8rem);
+  font-weight:800;
+  line-height:1;
+  letter-spacing:-1px;
+  color:var(--kas);
+  text-transform:none
+}
+.wallet-stat:nth-child(2) strong {
+  color:var(--gold)
+}
+.wallet-stat:nth-child(2) {
+  border-color:rgba(240,192,64,.1);
+  background:linear-gradient(135deg,rgba(240,192,64,.055),rgba(2,10,16,.5) 62%)
+}
+.wallet-stat em {
+  display:block;
+  margin-top:12px;
+  font-style:normal;
+  font-family:var(--fm);
+  font-size:.62rem;
+  letter-spacing:2.6px;
+  line-height:1.55;
+  color:var(--muted);
+  text-transform:uppercase
+}
+.wallet-gallery {
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:3px
+}
+.wallet-lookup-full .wallet-gallery {
+  grid-template-columns:repeat(6,1fr);
+  position:relative;
+  z-index:1
 }
 .rank-result {
   margin-top:22px;

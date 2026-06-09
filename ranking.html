@@ -14,6 +14,11 @@
     <link href="src/css/hero.css" rel="stylesheet"/>
     <link href="src/css/sections.css" rel="stylesheet"/>
     <link href="src/css/responsive.css" rel="stylesheet"/>
+    <script>
+        if (new URLSearchParams(window.location.search).has('wallet')) {
+          document.documentElement.classList.add('wallet-query');
+        }
+    </script>
     <style>
         .nacts{
           display:flex;
@@ -214,6 +219,32 @@
             <div class="legendary-strip" id="legendary-strip">
                 Loading legendary IDs...
             </div>
+        </div>
+    </div>
+    <div class="wallet-lookup wallet-lookup-full" id="wallet-lookup">
+        <div class="wallet-lookup-head">
+            <div>
+                <div class="rank-lookup-label">
+                    Check Wallet
+                </div>
+                <h3>
+                    Held Depth
+                </h3>
+                <p>
+                    Paste wallet. Only its KASRANKS surface here.
+                </p>
+            </div>
+            <div class="wallet-search">
+                <input id="wallet-address-input" placeholder="Kaspa address" type="text"/>
+                <button id="wallet-address-btn" type="button">
+                    Check Wallet
+                </button>
+            </div>
+        </div>
+        <div class="wallet-result" id="wallet-result">
+            Paste a wallet. Reveal its depth.
+        </div>
+        <div class="wallet-gallery" id="wallet-gallery">
         </div>
     </div>
 </section>
